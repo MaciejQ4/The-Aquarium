@@ -822,7 +822,7 @@ void alarm(){
   if (lightPeriod == false){
   if(hour >= alarmHour && minute >= alarmMinute){
     //if (hour >= alarmHour || (hour == alarmHour && minute >= alarmMinute)) {
-    digitalWrite(13, HIGH);
+    PORTB |= (1 << PB5);
     lightPeriod = true;
   }
   }
@@ -830,7 +830,7 @@ void alarm(){
   if (lightPeriod == true){
   if(hour >= alarm2Hour && minute >= alarm2Minute){
     //if (hour >= alarmHour || (hour == alarmHour && minute >= alarmMinute)) {
-    digitalWrite(13, LOW);
+    PORTB &= ~(1 << PB5);
     lightPeriod = false;
   }
   }
