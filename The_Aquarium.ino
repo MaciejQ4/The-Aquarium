@@ -150,10 +150,10 @@ void loop(){
         }
         if (currentMode == modeSETALARM1) {
           if (blinkInt == 1) changeAlarmDayOption(1);
-          if (blinkInt == 2) ChangeAlarm(1, 1, 0, 0,0);
-          if (blinkInt == 3) ChangeAlarm(1, 0, 1, 0,0);
-          if (blinkInt == 4) ChangeAlarm(1, 0, 0, 1,0);
-          if (blinkInt == 5) ChangeAlarm(1, 0, 0, 0,1); 
+          if (blinkInt == 2) ChangeAlarm(1, 1, 0, 0, 0);
+          if (blinkInt == 3) ChangeAlarm(1, 0, 1, 0, 0);
+          if (blinkInt == 4) ChangeAlarm(1, 0, 0, 1, 0);
+          if (blinkInt == 5) ChangeAlarm(1, 0, 0, 0, 1); 
         }
         if (currentMode == modeSETALARM1METHOD) changeAlarmMethod(1, 1);
         
@@ -162,10 +162,10 @@ void loop(){
         }
         if (currentMode == modeSETALARM2) {
           if (blinkInt == 1) changeAlarmDayOption(2);
-          if (blinkInt == 2) ChangeAlarm(2, 1, 0, 0,0);
-          if (blinkInt == 3) ChangeAlarm(2, 0, 1, 0,0);
-          if (blinkInt == 4) ChangeAlarm(2, 0, 0, 1,0);
-          if (blinkInt == 5) ChangeAlarm(2, 0, 0, 0,1);
+          if (blinkInt == 2) ChangeAlarm(2, 1, 0, 0, 0);
+          if (blinkInt == 3) ChangeAlarm(2, 0, 1, 0, 0);
+          if (blinkInt == 4) ChangeAlarm(2, 0, 0, 1, 0);
+          if (blinkInt == 5) ChangeAlarm(2, 0, 0, 0, 1);
         }
         if (currentMode == modeSETALARM2METHOD) {
           changeAlarmMethod(2, 1);
@@ -190,10 +190,10 @@ void loop(){
         }
         if (currentMode == modeSETALARM1) {
           if (blinkInt == 1) changeAlarmDayOption(1);
-          if (blinkInt == 2) ChangeAlarm(1, -1, 0, 0,0);
-          if (blinkInt == 3) ChangeAlarm(1, 0, -1, 0,0);
-          if (blinkInt == 4) ChangeAlarm(1, 0, 0, -1,0);
-          if (blinkInt == 5) ChangeAlarm(1, 0, 0, 0,-1);
+          if (blinkInt == 2) ChangeAlarm(1, -1, 0, 0, 0);
+          if (blinkInt == 3) ChangeAlarm(1, 0, -1, 0, 0);
+          if (blinkInt == 4) ChangeAlarm(1, 0, 0, -1, 0);
+          if (blinkInt == 5) ChangeAlarm(1, 0, 0, 0, -1);
         }
         if (currentMode == modeSETALARM1METHOD) changeAlarmMethod(1, 0);
         
@@ -202,10 +202,10 @@ void loop(){
         }
         if (currentMode == modeSETALARM2) {
           if (blinkInt == 1) changeAlarmDayOption(2);
-          if (blinkInt == 2) ChangeAlarm(2, -1, 0, 0,0);
-          if (blinkInt == 3) ChangeAlarm(2, 0, -1, 0,0);
-          if (blinkInt == 4) ChangeAlarm(2, 0, 0, -1,0);
-          if (blinkInt == 5) ChangeAlarm(2, 0, 0, 0,-1);
+          if (blinkInt == 2) ChangeAlarm(2, -1, 0, 0, 0);
+          if (blinkInt == 3) ChangeAlarm(2, 0, -1, 0, 0);
+          if (blinkInt == 4) ChangeAlarm(2, 0, 0, -1, 0);
+          if (blinkInt == 5) ChangeAlarm(2, 0, 0, 0, -1);
         }
         if (currentMode == modeSETALARM2METHOD) changeAlarmMethod(2, 0);
       
@@ -318,7 +318,7 @@ byte read_LCD_buttons(){
  if (!(PINC & (1 << PC2)))  return btnRIGHT;
  if (!(PINC & (1 << PC3)))  return btnDOWN;
  if (!(PINC & (1 << PC4)))  return btnSELECT; 
- return btnNONE;  // when all else fais, return this...
+ return btnNONE;  // when all else fails, return this...
 }
 
 /***************************************************************************************************************************************************************************************************************************
@@ -326,10 +326,10 @@ byte read_LCD_buttons(){
  **************************************************************************************************************************************************************************************************************************/
 
 void displayText(String line0Text, String line1Text){
-  lcd.setCursor(0,0);
+  lcd.setCursor(0, 0);
   sprintf(line0,"%-21s", line0Text.c_str());
   lcd.print(String(line0));
-  lcd.setCursor(0,1);
+  lcd.setCursor(0, 1);
   sprintf(line1,"%-21s", line1Text.c_str());
   lcd.print(String(line1));  
 }
@@ -354,7 +354,7 @@ String dateText() {
 }
 
 String timeText() {  
-  String result="Time: ";
+  String result = "Time: ";
   bool h12, PM;
   if (blinkInt!=1 || blinkNow == false) result += twoDigitNumber(Clock.getHour(h12, PM));
   else result += "  ";
@@ -426,7 +426,7 @@ void showAlarm2(){
     if (blinkInt != 2 || blinkNow == false) result1 += ADay;   
     else result1 += "  ";
 
-    String result2="Alarm2: ";  
+    String result2 = "Alarm2: ";  
     if (blinkInt != 3 || blinkNow == false) result2 += twoDigitNumber(AHour);
     else result2 += "  ";
 
@@ -725,7 +725,7 @@ int monthMaxDays(int monthNumber){
   //Adjust the minute
   AMinute += minAdjust;
   if (AMinute < 0) AMinute = 59;
-  if (AMinute  >59) AMinute = 0;
+  if (AMinute > 59) AMinute = 0;
 
   //Adjust the second
   if (alarmNum == 1){
