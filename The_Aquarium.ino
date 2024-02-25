@@ -31,18 +31,21 @@ const uint8_t ALRM2_MATCH_HR_MIN         = 0b0100;   // when hours and minutes m
 
 /*****************************************************************************************************************/
 
-// define some values used by the menu controller
-const uint8_t modeSHOWDATETIME = 0b0000;
-const uint8_t modeSHOWALARM1 = 0b0001;
-const uint8_t modeSHOWALARM2 = 0b0010;
-const uint8_t modeSETDATE = 0b0011;
-const uint8_t modeSETTIME = 0b0100;
-const uint8_t modeSETALARM1ON = 0b0101;
-const uint8_t modeSETALARM1 = 0b0110;
-const uint8_t modeSETALARM1METHOD = 0b0111;
-const uint8_t modeSETALARM2ON = 0b1000;
-const uint8_t modeSETALARM2 = 0b1001;
-const uint8_t modeSETALARM2METHOD = 0b1010;
+enum menuScreens {  
+  modeSHOWDATETIME,
+  modeSHOWALARM1,
+  modeSHOWALARM2,
+  modeSETDATE,
+  modeSETTIME,
+  modeSETALARM1ON,
+  modeSETALARM1,
+  modeSETALARM1METHOD,
+  modeSETALARM2ON,
+  modeSETALARM2,
+  modeSETALARM2METHOD,
+
+};
+
 uint8_t currentMode = modeSHOWDATETIME;
 
 // buffers for lcd display
@@ -120,7 +123,7 @@ void loop(){
       {
         oldKey = btnRIGHT;
         if (blinkInt < maxBlinkInt) blinkInt += 1;
-        
+
         if (currentMode == modeSHOWDATETIME) currentMode = modeSHOWALARM1;
         else if (currentMode == modeSHOWALARM1) currentMode = modeSHOWALARM2;
         else if (currentMode == modeSHOWALARM2) currentMode = modeSHOWDATETIME;
