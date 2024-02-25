@@ -84,14 +84,14 @@ DDRC &= ~(1 << PC2);
 DDRC &= ~(1 << PC3);
 DDRC &= ~(1 << PC4);
 
-PORTC |= (1<< PC0); // pullup resistors for buttons
-PORTC |= (1<< PC1);
-PORTC |= (1<< PC2);
-PORTC |= (1<< PC3);
-PORTC |= (1<< PC4);
+PORTC |= (1 << PC0); // pullup resistors for buttons
+PORTC |= (1 << PC1);
+PORTC |= (1 << PC2);
+PORTC |= (1 << PC3);
+PORTC |= (1 << PC4);
 
-lcd.begin(16,2);
-lcd.setCursor(0,0);
+lcd.begin(16, 2);
+lcd.setCursor(0, 0);
 Wire.begin();
 }
 
@@ -120,6 +120,7 @@ void loop(){
       {
         oldKey = btnRIGHT;
         if (blinkInt < maxBlinkInt) blinkInt += 1;
+        
         if (currentMode == modeSHOWDATETIME) currentMode = modeSHOWALARM1;
         else if (currentMode == modeSHOWALARM1) currentMode = modeSHOWALARM2;
         else if (currentMode == modeSHOWALARM2) currentMode = modeSHOWDATETIME;
@@ -361,7 +362,7 @@ String timeText() {
 
   result += ":";
 
-  if (blinkInt!=2 || blinkNow==false) result += twoDigitNumber(Clock.getMinute());
+  if (blinkInt!=2 || blinkNow == false) result += twoDigitNumber(Clock.getMinute());
   else result += "  ";
 
   result += ":";
