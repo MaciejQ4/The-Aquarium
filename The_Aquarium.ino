@@ -32,6 +32,7 @@ const uint8_t ALRM2_MATCH_HR_MIN         = 0b0100;   // when hours and minutes m
 /*****************************************************************************************************************/
 
 enum menuScreens {  
+
   modeSHOWDATETIME,
   modeSHOWALARM1,
   modeSHOWALARM2,
@@ -43,7 +44,6 @@ enum menuScreens {
   modeSETALARM2ON,
   modeSETALARM2,
   modeSETALARM2METHOD,
-
 };
 
 uint8_t currentMode = modeSHOWDATETIME;
@@ -52,17 +52,19 @@ uint8_t currentMode = modeSHOWDATETIME;
 char line0[21]; 
 char line1[21];
 
-// buttons
-uint8_t lcd_key         = 0b0000;
-const uint8_t btnRIGHT  = 0b0000;
-const uint8_t btnUP     = 0b0001;
-const uint8_t btnDOWN   = 0b0010;
-const uint8_t btnLEFT   = 0b0011;
-const uint8_t btnSELECT = 0b0100;
-const uint8_t btnNONE   = 0b0101;
+enum buttons {
 
+  btnRIGHT,
+  btnUP,
+  btnDOWN,
+  btnLEFT,
+  btnSELECT,
+  btnNONE,
+};
+
+uint8_t lcd_key = 0;
 const uint8_t bounceDelay = 50;
-uint8_t oldKey = 0b0000;
+uint8_t oldKey = 0;
 
 //Variables to control menu position
 bool blinkNow = false;
