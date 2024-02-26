@@ -483,7 +483,7 @@ String twoDigitNumber(uint8_t number){
   
   char buffer[3];
   snprintf(buffer,sizeof(buffer), "%02d", number );
-  return String(buffer);
+  return buffer;
 }
 
 /***************************************************************************************************************************************************************************************************************************
@@ -830,7 +830,7 @@ void alarm(){
     //if (hour >= alarmHour || (hour == alarmHour && minute >= alarmMinute)) {
     PORTB |= (1 << PB5);
     lightPeriod = true;
-  }
+    }
   }
 
   if (lightPeriod == true){
@@ -838,6 +838,6 @@ void alarm(){
     //if (hour >= alarmHour || (hour == alarmHour && minute >= alarmMinute)) {
     PORTB &= ~(1 << PB5);
     lightPeriod = false;
-  }
+    }
   }
 }
